@@ -29,10 +29,30 @@ export default function XvStoryScroll() {
   const mapSalonUrl = "https://maps.google.com/?q=Salon+de+Fiestas+Monarca+Iztapalapa";
 
   const photos = [
-    { id: 1, title: 'Bebé', subtitle: 'Un nuevo comienzo', placeholder: '01' },
-    { id: 2, title: '1 año', subtitle: 'Primeros pasos', placeholder: '02' },
-    { id: 3, title: 'Infancia', subtitle: 'Nuestra pequeña', placeholder: '03' },
-    { id: 4, title: 'Juventud', subtitle: 'Hermosos momentos', placeholder: '04' },
+    {
+      id: '01',
+      title: 'Bebé',
+      subtitle: 'Un nuevo comienzo',
+      url: 'https://images.unsplash.com/photo-1659310933156-b7b6a23e6f5a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cXVpbmNlYSVDMyVCMWVyYXxlbnwwfHwwfHx8MA%3D%3D'
+    },
+    {
+      id: '02',
+      title: '1 año',
+      subtitle: 'Primeros pasos',
+      url: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: '03',
+      title: 'Infancia',
+      subtitle: 'Nuestra pequeña',
+      url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: '04',
+      title: 'Juventud',
+      subtitle: 'Hermosos momentos',
+      url: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=80'
+    }
   ];
 
   return (
@@ -48,7 +68,7 @@ export default function XvStoryScroll() {
         </div>
 
         <div className="xv-scroll-content">
-          
+
           <section className="xv-slide-section fade-in-section">
             <div className="xv-inner-text">
               <span className="gold-number">15</span>
@@ -84,7 +104,7 @@ export default function XvStoryScroll() {
                 <span className="mini-subtitle">Mi Madrina:</span>
                 <h3 className="godparent-name">Mercedes Ramírez Pérez</h3>
               </div>
-              
+
               <h3 className="section-title">Recepción</h3>
               <p className="event-details">
                 Agradecemos su presencia en el <strong>"Salón de Fiestas Monarca"</strong> a partir de las 19:00 hrs.
@@ -103,16 +123,16 @@ export default function XvStoryScroll() {
             <div className="xv-inner-text gallery-slide-box">
               <span className="mini-subtitle">Mi Historia</span>
               <h3 className="section-title" style={{ margin: '4px 0 10px 0', fontSize: '1.2rem' }}>Instantes de mi vida</h3>
-              
+
               <div className="xv-vertical-gallery">
                 {photos.map((photo) => (
-                  <div 
-                    key={photo.id} 
+                  <div
+                    key={photo.id}
                     className="xv-vertical-photo-card"
                     onClick={() => setSelectedPhoto(photo)}
                   >
-                    <div className="vertical-thumb">
-                      <span>{photo.placeholder}</span>
+                    <div className="vertical-thumb" style={{ overflow: 'hidden', padding: 0 }}>
+                      <img src={photo.url} alt={photo.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     <div className="vertical-info">
                       <strong>{photo.title}</strong>
@@ -129,6 +149,16 @@ export default function XvStoryScroll() {
               <p>
                 Señor ¡Gracias! por estos XV Años llenos de amor, hoy ante Dios concluyo una etapa maravillosa, para iniciar una vida llena de sueños e ilusiones, quiero hacerlos partícipes de mi inmensa alegría junto con mi familia.
               </p>
+
+              {/* Botón de Confirmación por WhatsApp */}
+              <a
+                href="https://wa.me/TU_NUMERO_DE_TELEFONO?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%20XV%20Años%20de%20Mayte."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="xv-whatsapp-btn"
+              >
+                Confirmar Asistencia
+              </a>
             </div>
           </section>
         </div>
@@ -138,8 +168,7 @@ export default function XvStoryScroll() {
         <div className="xv-modal-overlay" onClick={() => setSelectedPhoto(null)}>
           <div className="xv-modal-container" onClick={(e) => e.stopPropagation()}>
             <button className="xv-close-modal" onClick={() => setSelectedPhoto(null)}>&times;</button>
-            <div className="xv-modal-photo-full">
-              <span>{selectedPhoto.placeholder}</span>
+            <div className="xv-modal-photo-full" style={{ backgroundImage: `url(${selectedPhoto.url})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
               <div className="xv-modal-overlay-caption">
                 <h3>{selectedPhoto.title}</h3>
                 <p>{selectedPhoto.subtitle} - Mayte</p>
