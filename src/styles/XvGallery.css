@@ -1,0 +1,114 @@
+/* src/xv-mayte/styles/XvGallery.css */
+
+.xv-gallery-section {
+  position: relative;
+  width: 100%;
+  padding: 80px 20px;
+  background-color: var(--xv-bg);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.xv-gallery-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.gallery-mini-tag {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--xv-pink);
+  font-weight: 500;
+}
+
+.gallery-title {
+  font-family: var(--font-script);
+  font-size: 3.5rem;
+  color: var(--xv-gold);
+  margin: 10px 0;
+}
+
+.gallery-subtitle {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--xv-text-muted);
+  font-style: italic;
+}
+
+.xv-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.xv-photo-card {
+  background: var(--xv-card-bg);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--xv-pink-light);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.xv-photo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+}
+
+.photo-frame-inner {
+  width: 100%;
+  height: 220px;
+  background-color: var(--xv-pink-light);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Simulación de contenedor de foto (sustituir con <img src="..." />) */
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #fce4e8 0%, #f3e5ab 100%);
+}
+
+.photo-number {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--xv-gold);
+  opacity: 0.6;
+}
+
+.photo-caption {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.photo-caption h4 {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--xv-text-dark);
+  margin: 0 0 5px 0;
+}
+
+.photo-caption span {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--xv-pink);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

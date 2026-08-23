@@ -1,0 +1,117 @@
+/* src/xv-mayte/styles/XvHero.css */
+
+.xv-hero-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--xv-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  /* Fondo sutil tipo pergamino/papel fino */
+  background-image: radial-gradient(circle, #fff 0%, var(--xv-bg) 100%);
+}
+
+.xv-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  max-width: 600px;
+  animation: fadeInHero 1.2s ease-out forwards;
+}
+
+.xv-subtitle-top {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--xv-pink);
+  font-weight: 500;
+}
+
+.xv-title-name {
+  font-family: var(--font-script);
+  font-size: 5rem;
+  color: var(--xv-gold);
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+}
+
+.xv-date-text {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--xv-text-dark);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.xv-open-btn {
+  background-color: transparent;
+  color: var(--xv-gold);
+  border: 1px solid var(--xv-gold);
+  padding: 12px 30px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.xv-open-btn:hover {
+  background-color: var(--xv-gold);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeInHero {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Contenedor general base (si lo usas en otros lados) */
+.xv-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* --- LOGO SUPERIOR (Amplio, hasta 500px como pediste) --- */
+.top-logo {
+  width: 100%;
+  max-width: 250px; /* Ancho máximo grande */
+  margin-bottom: 15px;
+}
+
+.top-logo .xv-hero-logo {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+
+/* --- LOGO INFERIOR (Tamaño normal/pequeño) --- */
+.bottom-logo {
+  margin-top: 25px;
+}
+
+.bottom-logo .xv-hero-logo {
+  width: 50px; /* Tamaño chico y discreto debajo del botón */
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}

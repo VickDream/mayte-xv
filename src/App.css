@@ -1,0 +1,45 @@
+/* src/App.css o estilos globales de los XV */
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
+
+:root {
+  /* Paleta de colores XV Mayte */
+  --xv-bg: #fdfbf7;             /* Fondo pergamino suave / blanco marfil */
+  --xv-card-bg: #ffffff;        /* Fondo de tarjetas limpio */
+  --xv-gold: #d4af37;           /* Dorado principal */
+  --xv-gold-light: #f3e5ab;     /* Dorado claro / destellos */
+  --xv-pink: #d18a91;           /* Rosa pastel / empolvado de las rosas */
+  --xv-pink-light: #f7e6e8;     /* Rosa muy suave para fondos de detalles */
+  --xv-text-dark: #2c2c2c;      /* Texto principal oscuro para buena lectura */
+  --xv-text-muted: #666666;     /* Texto secundario / subtítulos */
+  
+  /* Tipografías */
+  --font-script: 'Great Vibes', cursive;       /* Para nombres y títulos estelares */
+  --font-serif: 'Playfair Display', serif;     /* Para subtítulos y encabezados formales */
+  --font-sans: 'Montserrat', sans-serif;       /* Para fechas, horas y textos largos */
+}
+
+/* Estilos base globales para la sección de XV */
+body {
+  background-color: var(--xv-bg);
+  color: var(--xv-text-dark);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Añade esto a tu App.css si gustas */
+.xv-main-invitation {
+  animation: fadeInInvitation 1s ease-in-out forwards;
+}
+
+@keyframes fadeInInvitation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

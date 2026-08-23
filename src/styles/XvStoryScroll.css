@@ -1,0 +1,485 @@
+/* src/xv-mayte/styles/XvStoryScroll.css */
+
+.xv-story-wrapper {
+  position: relative;
+  width: 100%;
+  background-color: var(--xv-bg);
+}
+
+/* El contenedor que se queda fijo en la pantalla */
+.xv-sticky-decorations {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+/* El marco dorado: Ahora con límites de ancho Y alto para que nunca se estire de más */
+.xv-gold-frame {
+  position: relative;
+  width: 100%;
+  max-width: 480px;        /* Ancho controlado para que no se expanda a lo loco */
+  height: 100%;
+  max-height: 820px;       /* 👈 ESTO EVITA QUE SE ESTIRE EN VERTICAL EN MONITORES ALTOS */
+  border: 2px solid var(--xv-gold);
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+/* --- ESQUINAS FLORALES (Tus ajustes manuales que ya quedaron perfectos) --- */
+.floral-corner {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-image: url('/flowers.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.floral-corner.top-left {
+  top: 0px;
+  left: -5px;
+  transform: rotate(90deg);
+}
+
+.floral-corner.top-right {
+  top: -5px;
+  right: 1px;
+  transform: rotate(180deg);
+}
+
+.floral-corner.bottom-left {
+  bottom: -5px;
+  left: 0px;
+  transform: rotate(360deg);
+}
+
+.floral-corner.bottom-right {
+  bottom: 5px;
+  right: -5px;
+  transform: rotate(-90deg);
+}
+
+/* Contenido que hace scroll por ENCIMA del marco fijo */
+.xv-scroll-content {
+  position: relative;
+  z-index: 20;
+  margin-top: -100vh;
+}
+
+/* Cada sección ocupa la pantalla para el efecto de scroll paso a paso */
+.xv-slide-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Tarjetas interiores con un tamaño armónico que respeta el marco */
+.xv-inner-text {
+  width: 85%;
+  max-width: 400px;
+  text-align: center;
+  background: rgba(253, 251, 247, 0.95);
+  padding: 30px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  animation: fadeInText 0.8s ease-out;
+  box-sizing: border-box;
+}
+
+/* Tipografías y estilos internos (mantén tus clases igual) */
+.gold-number {
+  font-family: var(--font-script);
+  font-size: 3.2rem;
+  color: var(--xv-gold);
+  display: block;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.parents-names {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  color: var(--xv-text-dark);
+  font-weight: 500;
+  margin: 2px 0;
+}
+
+.invitation-intro {
+  font-size: 0.8rem;
+  color: var(--xv-text-muted);
+  line-height: 1.4;
+  margin: 12px 0;
+}
+
+.debut-name {
+  font-family: var(--font-script);
+  font-size: 3.5rem;
+  color: var(--xv-gold);
+  margin: 8px 0 0 0;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--xv-gold);
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--xv-pink-light);
+  padding-bottom: 5px;
+}
+
+.event-details, .event-location {
+  font-size: 0.8rem;
+  color: var(--xv-text-dark);
+  line-height: 1.5;
+  margin: 8px 0;
+}
+
+.godparents-block {
+  margin-bottom: 20px;
+}
+
+.mini-subtitle {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--xv-pink);
+}
+
+.godparent-name {
+  font-family: var(--font-script);
+  font-size: 2rem;
+  color: var(--xv-gold);
+  margin: 4px 0 0 0;
+}
+
+.dedication-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--xv-text-dark);
+}
+
+@keyframes fadeInText {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botones Maps */
+.xv-map-btn {
+  display: inline-block;
+  margin-top: 8px;
+  background-color: var(--xv-pink-light);
+  color: var(--xv-gold);
+  border: 1px solid var(--xv-gold);
+  padding: 7px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.xv-map-btn:hover {
+  background-color: var(--xv-gold);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Galería Vertical */
+.gallery-slide-box {
+  max-width: 400px !important;
+  padding: 15px 20px !important;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.xv-vertical-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.xv-vertical-photo-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--xv-pink-light);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUpCards 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: all 0.25s ease;
+}
+
+.xv-vertical-photo-card:nth-child(1) { animation-delay: 0.1s; }
+.xv-vertical-photo-card:nth-child(2) { animation-delay: 0.2s; }
+.xv-vertical-photo-card:nth-child(3) { animation-delay: 0.3s; }
+.xv-vertical-photo-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideUpCards {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.xv-vertical-photo-card:hover {
+  border-color: var(--xv-gold);
+  transform: translateY(-2px) translateX(4px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+  background: linear-gradient(to right, #fff, #fdfbf7);
+}
+
+.vertical-thumb {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #fce4e8 0%, #f3e5ab 100%);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--xv-gold);
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.vertical-info {
+  margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.vertical-info strong {
+  font-size: 0.8rem;
+  color: var(--xv-text-dark);
+  font-family: var(--font-serif);
+}
+
+.vertical-info span {
+  font-size: 0.68rem;
+  color: var(--xv-pink);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================
+   POPUP / MODAL
+   ================================================---------- */
+
+.xv-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.xv-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  border: 2px solid var(--xv-gold);
+  background: #000;
+}
+
+.xv-close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.xv-close-modal:hover {
+  background: var(--xv-gold);
+}
+
+.xv-modal-photo-full {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: linear-gradient(135deg, #fce4e8 0%, #f3e5ab 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--xv-gold);
+  font-size: 3.5rem;
+  font-family: var(--font-serif);
+}
+
+.xv-modal-overlay-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  padding: 10px 12px;
+  box-sizing: border-box;
+  text-align: center;
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.xv-modal-overlay-caption h3 {
+  font-family: var(--font-serif);
+  color: var(--xv-gold);
+  font-size: 1rem;
+  margin: 0 0 2px 0;
+}
+
+.xv-modal-overlay-caption p {
+  font-family: var(--font-sans);
+  color: var(--xv-bg);
+  font-size: 0.7rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================
+   ESTILOS RESPONSIVOS (MÓVIL)
+   ================================================---------- */
+
+@media screen and (max-width: 768px) {
+  .xv-sticky-decorations,
+  .xv-slide-section {
+    padding: 10px;
+  }
+
+  .xv-gold-frame {
+    max-width: 100%;
+    max-height: none; /* En celular sí dejamos que tome toda la altura disponible */
+    height: calc(100vh - 20px);
+  }
+
+  /* 📱 MÓVIL: Tus esquinas manuales conservadas */
+  .floral-corner {
+    width: 80px;
+    height: 80px;
+  }
+
+  .floral-corner.top-left {
+    top: 2px;
+    left: -2px;
+    transform: rotate(90deg);
+  }
+
+  .floral-corner.top-right {
+    top: 0px;
+    right: 2px;
+    transform: rotate(180deg);
+  }
+
+  .floral-corner.bottom-left {
+    bottom: 0px;
+    left: 2px;
+    transform: rotate(360deg);
+  }
+
+  .floral-corner.bottom-right {
+    bottom: 2px;
+    right: 0px;
+    transform: rotate(-90deg);
+  }
+
+  .xv-inner-text {
+    width: 88%;
+    max-width: 330px !important;
+    padding: 16px 14px !important;
+    max-height: 78vh;
+    overflow-y: auto;
+  }
+
+  .debut-name {
+    font-size: 2.8rem;
+  }
+
+  .gold-number {
+    font-size: 2.6rem;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+  }
+
+  .event-details, .event-location, .invitation-intro {
+    font-size: 0.75rem;
+    line-height: 1.35;
+    margin: 5px 0;
+  }
+
+  .gallery-slide-box {
+    padding: 10px 12px !important;
+  }
+
+  .xv-vertical-gallery {
+    gap: 5px;
+  }
+
+  .vertical-thumb {
+    width: 38px;
+    height: 38px;
+    font-size: 0.85rem;
+  }
+
+  .xv-map-btn {
+    padding: 5px 10px;
+    font-size: 0.65rem;
+    margin-top: 5px;
+  }
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
