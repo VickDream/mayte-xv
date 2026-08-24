@@ -1,6 +1,8 @@
 /* src/App.css o estilos globales de los XV */
 
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&family=Rouge+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=The+Nautigal:wght@400;700&display=swap');
 
 :root {
   /* Paleta de colores XV Mayte */
@@ -17,6 +19,8 @@
   --font-script: 'Great Vibes', cursive;       /* Para nombres y títulos estelares */
   --font-serif: 'Playfair Display', serif;     /* Para subtítulos y encabezados formales */
   --font-sans: 'Montserrat', sans-serif;       /* Para fechas, horas y textos largos */
+  --font-text: "Imperial Script", cursive;;
+  --font-text2: "The Nautigal", cursive;
 }
 
 /* Estilos base globales para la sección de XV */

@@ -28,6 +28,7 @@
   max-width: 450px;
   height: 94vh;
   max-height: 820px;
+  border-radius: 10px;
   border: 2px solid var(--xv-gold);
   background-color: rgba(255, 255, 255, 0.85);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
@@ -136,8 +137,8 @@
 
 /* Tipografías con espaciados internos bien balanceados */
 .gold-number {
-  font-family: var(--font-script);
-  font-size: 3.2rem;
+  font-family: var(--font-text);
+  font-size: 5rem;
   color: var(--xv-gold);
   display: block;
   line-height: 1;
@@ -145,22 +146,25 @@
 }
 
 .parents-names {
-  font-family: var(--font-serif);
-  font-size: 1rem;
+  font-family: var(--font-text);
+  font-weight: 800;
+  font-style: normal;
+  font-size: 1.3rem;
   color: var(--xv-text-dark);
   font-weight: 500;
   margin-bottom: 2px;
 }
 
 .invitation-intro {
-  font-size: 1.2rem;
+  font-size: 1.7rem;
+  font-family: var(--font-text2);
   color: var(--xv-text-muted);
   line-height: 1.4;
   margin-bottom: 4px;
 }
 
 .debut-name {
-  font-family: var(--font-script);
+  font-family: var(--font-text);
   font-size: 4rem;
   color: var(--xv-gold);
   margin: 50px 0;
@@ -168,8 +172,8 @@
 }
 
 .section-title {
-  font-family: var(--font-serif);
-  font-size: 2rem;
+  font-family: var(--font-script);
+  font-size: 1.3rem;
   color: var(--xv-gold);
   margin-bottom: 4px;
   border-bottom: 1px solid var(--xv-pink-light);
@@ -179,33 +183,35 @@
 
 .event-details,
 .event-location {
-  font-size: 1.2rem;
+  font-family: var(--font-text2); 
+  font-size: 1.5rem;
   color: var(--xv-text-dark);
   line-height: 1.4;
   margin: 3px 0;
 }
 
 .godparents-block {
-  margin-bottom: 6px;
+  margin-top: 0px;
 }
 
 .mini-subtitle {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-family: var(--font-sans);
   color: var(--xv-pink);
   margin-top: 2px;
 }
 
 .godparent-name {
-  font-family: var(--font-script);
-  font-size: 2.1rem;
+  font-family: var(--font-text);
+  font-size: 2rem;
   color: var(--xv-gold);
-  margin: 2px 0;
+  margin: 6px 0;
 }
 
 .dedication-text {
-  font-family: var(--font-serif);
+  font-family: var(--font-script);
   font-style: italic;
   font-size: 1.5rem;
   line-height: 1.45;
@@ -332,7 +338,7 @@
 .vertical-info strong {
   font-size: 1rem;
   color: var(--xv-text-dark);
-  font-family: var(--font-serif);
+  font-family: var(--font-script);
 }
 
 .vertical-info span {
@@ -421,7 +427,7 @@
 }
 
 .xv-modal-overlay-caption h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-script);
   color: var(--xv-gold);
   font-size: 1.5rem;
   margin: 0 0 2px 0;
