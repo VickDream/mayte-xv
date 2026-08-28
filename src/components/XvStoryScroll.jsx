@@ -1,19 +1,19 @@
 // src/xv-mayte/components/XvStoryScroll.jsx
 import React, { useState, useEffect } from 'react';
+import { photosData } from '../data/photosData'; // Importamos los datos correctamente
 import '../styles/XvStoryScroll.css';
 
 export default function XvStoryScroll() {
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Efecto para activar y desactivar el fade-in según la dirección del scroll
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Entra a la pantalla (bajando o subiendo)
           entry.target.classList.add('is-visible');
         } else {
-          // Sale de la pantalla (se oculta al subir o bajar)
           entry.target.classList.remove('is-visible');
         }
       });
@@ -28,32 +28,24 @@ export default function XvStoryScroll() {
   const mapTemploUrl = "https://maps.google.com/?q=Parroquia+de+la+Resurreccion+de+Cristo+Iztapalapa";
   const mapSalonUrl = "https://maps.google.com/?q=Salon+de+Fiestas+Monarca+Iztapalapa";
 
-  const photos = [
-    {
-      id: '01',
-      title: 'Bebé',
-      subtitle: 'Un nuevo comienzo',
-      url: 'https://images.unsplash.com/photo-1659310933156-b7b6a23e6f5a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cXVpbmNlYSVDMyVCMWVyYXxlbnwwfHwwfHx8MA%3D%3D'
-    },
-    {
-      id: '02',
-      title: '1 año',
-      subtitle: 'Primeros pasos',
-      url: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-      id: '03',
-      title: 'Infancia',
-      subtitle: 'Nuestra pequeña',
-      url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=800&q=80'
-    },
-    {
-      id: '04',
-      title: 'Juventud',
-      subtitle: 'Hermosos momentos',
-      url: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=80'
+  const handleOpenModal = (category) => {
+    setSelectedCategory(category);
+    setCurrentImageIndex(0);
+  };
+
+  const handleNextImage = (e) => {
+    e.stopPropagation();
+    if (selectedCategory) {
+      setCurrentImageIndex((prev) => (prev + 1) % selectedCategory.images.length);
     }
-  ];
+  };
+
+  const handlePrevImage = (e) => {
+    e.stopPropagation();
+    if (selectedCategory) {
+      setCurrentImageIndex((prev) => (prev - 1 + selectedCategory.images.length) % selectedCategory.images.length);
+    }
+  };
 
   return (
     <>
@@ -122,17 +114,17 @@ export default function XvStoryScroll() {
           <section className="xv-slide-section fade-in-section">
             <div className="xv-inner-text gallery-slide-box">
               <span className="mini-subtitle">Mi Historia</span>
-              <h3 className="section-title" style={{ margin: '4px 0 10px 0', fontSize: '1.2rem' }}>Instantes de mi vida</h3>
+              <h3 className="section-title gallery-heading-custom">Instantes de mi vida</h3>
 
               <div className="xv-vertical-gallery">
-                {photos.map((photo) => (
+                {photosData.map((photo) => (
                   <div
                     key={photo.id}
                     className="xv-vertical-photo-card"
-                    onClick={() => setSelectedPhoto(photo)}
+                    onClick={() => handleOpenModal(photo)}
                   >
-                    <div className="vertical-thumb" style={{ overflow: 'hidden', padding: 0 }}>
-                      <img src={photo.url} alt={photo.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <div className="vertical-thumb vertical-thumb-custom">
+                      <img src={photo.url} alt={photo.title} className="vertical-thumb-img" />
                     </div>
                     <div className="vertical-info">
                       <strong>{photo.title}</strong>
@@ -151,27 +143,47 @@ export default function XvStoryScroll() {
               </p>
 
               {/* Botón de Confirmación por WhatsApp */}
-              <a
+              {/* <a
                 href="https://wa.me/TU_NUMERO_DE_TELEFONO?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%20XV%20Años%20de%20Mayte."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="xv-whatsapp-btn"
               >
                 Confirmar Asistencia
-              </a>
+              </a> */}
             </div>
           </section>
         </div>
       </div>
 
-      {selectedPhoto && (
-        <div className="xv-modal-overlay" onClick={() => setSelectedPhoto(null)}>
+      {/* MODAL / POPUP CON CARRUSEL DE MÚLTIPLES FOTOS */}
+      {selectedCategory && (
+        <div className="xv-modal-overlay" onClick={() => setSelectedCategory(null)}>
           <div className="xv-modal-container" onClick={(e) => e.stopPropagation()}>
-            <button className="xv-close-modal" onClick={() => setSelectedPhoto(null)}>&times;</button>
-            <div className="xv-modal-photo-full" style={{ backgroundImage: `url(${selectedPhoto.url})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <button className="xv-close-modal" onClick={() => setSelectedCategory(null)}>&times;</button>
+
+            <div
+              className="xv-modal-photo-full xv-modal-carousel-bg"
+              style={{ backgroundImage: `url(${selectedCategory.images[currentImageIndex]})` }}
+            >
+              {/* Controles del Carrusel */}
+              {selectedCategory.images.length > 1 && (
+                <>
+                  <button onClick={handlePrevImage} className="xv-carousel-btn xv-carousel-prev">
+                    &#10094;
+                  </button>
+                  <button onClick={handleNextImage} className="xv-carousel-btn xv-carousel-next">
+                    &#10095;
+                  </button>
+                  <div className="xv-carousel-counter">
+                    {currentImageIndex + 1} / {selectedCategory.images.length}
+                  </div>
+                </>
+              )}
+
               <div className="xv-modal-overlay-caption">
-                <h3>{selectedPhoto.title}</h3>
-                <p>{selectedPhoto.subtitle} - Mayte</p>
+                <h3>{selectedCategory.title}</h3>
+                <p>{selectedCategory.subtitle} - Mayte</p>
               </div>
             </div>
           </div>
