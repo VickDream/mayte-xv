@@ -27,7 +27,7 @@ export default function XvWelcome({ onOpen }) {
         <h1 className="debut-name">Mayte</h1>
         <p className="invitation-intro">Tienes una invitación muy especial</p>
         <button className="xv-map-btn xv-open-main-btn" onClick={handleOpenClick}>
-          Abrir Invitación 🎵
+          Abrir Invitación
         </button>
       </div>
     </div>

@@ -10,7 +10,7 @@ export default function XvHero({ onOpenInvitation }) {
           
           {/* Primer logo (arriba del título principal) */}
           <div className="xv-logo-container top-logo">
-            <img src="tiara.svg" alt="Logo superior" className="xv-hero-logo" />
+            <img src="tiara2.svg" alt="Logo superior" className="xv-hero-logo" />
           </div>
 
           <span className="xv-subtitle-top">Mis XV Años</span>

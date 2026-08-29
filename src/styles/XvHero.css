@@ -94,8 +94,7 @@
 /* --- LOGO SUPERIOR (Amplio, hasta 500px como pediste) --- */
 .top-logo {
   width: 100%;
-  max-width: 250px; /* Ancho máximo grande */
-  margin-bottom: 15px;
+  max-width: 300px; /* Ancho máximo grande */
 }
 
 .top-logo .xv-hero-logo {
